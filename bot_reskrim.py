@@ -64,16 +64,21 @@ PAKET_LOKASI_QW3_1 = [
 def kirim_notif_telegram(pesan, foto_path=None):
     if not TG_TOKEN or not TG_CHAT_ID:
         return
-    try:
-        if foto_path and os.path.exists(foto_path):
-            url = f"https://api.telegram.org/bot{TG_TOKEN}/sendPhoto"
-            with open(foto_path, "rb") as f:
-                requests.post(url, data={"chat_id": TG_CHAT_ID, "caption": pesan[:1000]}, files={"photo": f}, timeout=20)
-        else:
-            url = f"https://api.telegram.org/bot{TG_TOKEN}/sendMessage"
-            requests.post(url, data={"chat_id": TG_CHAT_ID, "text": pesan[:4000]}, timeout=20)
-    except Exception as e:
-        print("Gagal kirim ke Telegram:", e)
+    
+    # Mendukung pengiriman ke beberapa User ID sekaligus yang dipisahkan koma (,)
+    chat_ids = [cid.strip() for cid in TG_CHAT_ID.split(",") if cid.strip()]
+    
+    for chat_id in chat_ids:
+        try:
+            if foto_path and os.path.exists(foto_path):
+                url = f"https://api.telegram.org/bot{TG_TOKEN}/sendPhoto"
+                with open(foto_path, "rb") as f:
+                    requests.post(url, data={"chat_id": chat_id, "caption": pesan[:1000]}, files={"photo": f}, timeout=20)
+            else:
+                url = f"https://api.telegram.org/bot{TG_TOKEN}/sendMessage"
+                requests.post(url, data={"chat_id": chat_id, "text": pesan[:4000]}, timeout=20)
+        except Exception as e:
+            print(f"Gagal kirim ke Telegram (ID: {chat_id}):", e)
 
 def scan_semua_foto_drive(page):
     folder_id = FOLDER_UTAMA_URL.rstrip("/").split("/")[-1].split("?")[0]
