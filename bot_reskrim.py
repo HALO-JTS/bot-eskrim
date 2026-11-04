@@ -10,194 +10,251 @@ PASSWORD = os.environ.get("POSKO_PASSWORD", "").strip()
 TG_TOKEN = os.environ.get("TELEGRAM_TOKEN", "").strip()
 TG_CHAT_ID = os.environ.get("TELEGRAM_CHAT_ID", "").strip()
 
-# ==========================================================
-# IDENTITAS & 1 LINK FOLDER GOOGLE DRIVE UNTUK 8 KEGIATAN
-# ==========================================================
-NAMA_KANIT_RESKRIM = "AIPDA EKO HERI ANC"
-FOLDER_UTAMA_URL = "https://drive.google.com/drive/folders/1q2wd72u-Hx3cEcMe2aBCykG8HjtuyBO2"
+NAMA_PELAPOR = "AIPDA EKO HERIYANTO ANC"
+FOLDER_URL_RESKRIM = "https://drive.google.com/drive/folders/1q2wd72u-Hx3cEcMe2aBCykG8HjtuyBO2"
 DEFAULT_LINK = "https://drive.google.com/file/d/17KmVFmPU-OZk0dBdbVgF7AZ6ayhGWPyl/view?usp=drivesdk"
-TANGGAL_PATOKAN = date(2026, 10, 31)
+TANGGAL_PATOKAN = date(2026, 10, 28)
 
 # ==========================================================
-# VARIASI OTOMATIS QW1.9 (RUTE PATROLI SIAGA RESERSE)
+# 1. VARIASI RUTE PATROLI RESERSE (QW1.9) & LOKASI JATISRONO
 # ==========================================================
-DAFTAR_RUTE_RESERSE = [
-    "MAKO POLSEK JATISRONO - PASAR JATISRONO - SPBU - BANK BRI - BANK BNI - MAKO",
-    "MAKO POLSEK JATISRONO - SIMPANG 4 TERMINAL - BANK BPD - BANK MANDIRI - ALAS MBOGO - MAKO",
-    "MAKO POLSEK JATISRONO - JALAN RAYA JATISRONO - KAWASAN PERTOKOAN - OBVIT PERBANKAN - SPBU - MAKO",
-    "MAKO POLSEK JATISRONO - TUGU BINTANG - PASAR JATISRONO - PEMUKIMAN PENDUDUK - SPBU - MAKO",
+DAFTAR_RUTE_RESKRIM = [
+    "MAKO POLSEK - PASAR JATISRONO - BRI - BPD - SPBU JATISRONO - MAKO",
+    "MAKO POLSEK - SIMPANG EMPAT TERMINAL - BNI - MANDIRI - PASAR - MAKO",
+    "MAKO POLSEK - TUGU BINTANG - PASAR JATISRONO - PERBANKAN - SPBU - MAKO",
+    "MAKO POLSEK - SPBU JATISRONO - BRI - MANDIRI - PASAR JATISRONO - MAKO",
+    "MAKO POLSEK - JALAN RAYA JATISRONO - OBJEK VITAL PERBANKAN - PASAR - MAKO",
 ]
 
-ALASAN_RUTE_RESERSE = [
-    "Antisipasi tindak pidana C3 (Curat, Curas, Curanmor), premanisme, dan kejahatan jalanan pada jam rawan",
-    "Pemantauan titik rawan kejahatan jalanan, objek vital perbankan, serta pusat aktivitas masyarakat di wilayah Jatisrono",
-    "Mencegah potensi gangguan kamtibmas, pemerasan, dan tindak kriminalitas malam hari di wilayah hukum Polsek Jatisrono",
-    "Patroli mobile dan dialogis fungsi reserse guna memastikan situasi keamanan wilayah Jatisrono tetap kondusif",
+DAFTAR_LOKASI_UMUM = [
+    {"lokasi": "PASAR JATISRONO, KEC. JATISRONO", "koordinat": "(-7.8273937, 111.1285440)"},
+    {"lokasi": "JALAN SEKITAR PASAR JATISRONO", "koordinat": "(-7.8274594, 111.1289731)"},
+    {"lokasi": "TUGU BINTANG JATISRONO", "koordinat": "(-7.8272791, 111.1287683)"},
+    {"lokasi": "JALAN SEKITAR SPBU JATISRONO", "koordinat": "(-7.8296862, 111.1607271)"},
 ]
 
+LOKASI_MAKO = {
+    "lokasi": "MAKO POLSEK JATISRONO, KEC. JATISRONO",
+    "koordinat": "(-7.8273937, 111.1285440)"
+}
+
+LOKASI_SPBU = {
+    "lokasi": "SPBU JATISRONO, KEC. JATISRONO",
+    "koordinat": "(-7.8296862, 111.1607271)"
+}
+
 # ==========================================================
-# VARIASI OTOMATIS QW3.1 (LOKASI PENEGAKAN JUDI & PENIPUAN DIGITAL)
+# 2. DAFTAR 8 KEGIATAN HARIAN RESKRIM
 # ==========================================================
-PAKET_LOKASI_QW3_1 = [
+DAFTAR_KEGIATAN_RESKRIM = [
     {
-        "lokasi": "KAWASAN PASAR JATISRONO",
-        "koordinat": "(-7.8273937, 111.1285440)",
-        "pertimbangan": "Pusat keramaian warga untuk pemantauan dan pencegahan praktik perjudian daring maupun penipuan digital",
+        "kode": "QW1.9",
+        "tab": "Ruang Publik Aman",
+        "nama": "Patroli siaga reserse (Pagar)"
     },
     {
-        "lokasi": "SEKITAR TUGU BINTANG JATISRONO",
-        "koordinat": "(-7.8272791, 111.1287683)",
-        "pertimbangan": "Lokasi berkumpulnya masyarakat dan pemuda guna deteksi dini serta pencegahan akses judi daring",
+        "kode": "QW3.1",
+        "tab": "Bersih Judi Daring dan Penipuan Digital",
+        "nama": "Penegakan hukum judi dan penipuan di ruang digital"
     },
     {
-        "lokasi": "WILAYAH DESA JATISRONO",
-        "koordinat": "(-7.8265000, 111.1254000)",
-        "pertimbangan": "Pemantauan aktivitas masyarakat dan sosialisasi pencegahan kejahatan penipuan di ruang digital",
+        "kode": "QW5.1",
+        "tab": "Perkara Terlacak, SP2HP Pasti",
+        "nama": "SP2HP berkala kepada pelapor"
     },
     {
-        "lokasi": "SEKITAR TERMINAL JATISRONO",
-        "koordinat": "(-7.8278500, 111.1291000)",
-        "pertimbangan": "Area publik yang ramai aktivitas warga sehingga memerlukan pengawasan terhadap potensi perjudian",
+        "kode": "QW5.2",
+        "tab": "Perkara Terlacak, SP2HP Pasti",
+        "nama": "Layanan informasi perkara"
+    },
+    {
+        "kode": "QW5.3",
+        "tab": "Perkara Terlacak, SP2HP Pasti",
+        "nama": "Gelar perkara atas pengaduan masyarakat"
+    },
+    {
+        "kode": "QW5.4",
+        "tab": "Perkara Terlacak, SP2HP Pasti",
+        "nama": "Keadilan restoratif untuk perkara ringan"
+    },
+    {
+        "kode": "QW8.1",
+        "tab": "KUHP/KUHAP Siap, Penyidikan Berbasis Ilmiah",
+        "nama": "Penanganan BBM ilegal dan kejahatan ekonomi"
+    },
+    {
+        "kode": "QW8.2",
+        "tab": "KUHP/KUHAP Siap, Penyidikan Berbasis Ilmiah",
+        "nama": "Penanganan TPPO, korupsi, penyelundupan, pencucian uang, dan kejahatan lainnya"
     },
 ]
 
 def kirim_notif_telegram(pesan, foto_path=None):
     if not TG_TOKEN or not TG_CHAT_ID:
         return
-    
-    # Mendukung pengiriman ke beberapa User ID sekaligus yang dipisahkan koma (,)
-    chat_ids = [cid.strip() for cid in TG_CHAT_ID.split(",") if cid.strip()]
-    
-    for chat_id in chat_ids:
+    daftar_chat_id = [cid.strip() for cid in TG_CHAT_ID.split(",") if cid.strip()]
+    for cid in daftar_chat_id:
         try:
             if foto_path and os.path.exists(foto_path):
                 url = f"https://api.telegram.org/bot{TG_TOKEN}/sendPhoto"
                 with open(foto_path, "rb") as f:
-                    requests.post(url, data={"chat_id": chat_id, "caption": pesan[:1000]}, files={"photo": f}, timeout=20)
+                    requests.post(url, data={"chat_id": cid, "caption": pesan[:1000]}, files={"photo": f}, timeout=20)
             else:
                 url = f"https://api.telegram.org/bot{TG_TOKEN}/sendMessage"
-                requests.post(url, data={"chat_id": chat_id, "text": pesan[:4000]}, timeout=20)
+                requests.post(url, data={"chat_id": cid, "text": pesan[:4000]}, timeout=20)
         except Exception as e:
-            print(f"Gagal kirim ke Telegram (ID: {chat_id}):", e)
+            print(f"Gagal kirim ke Telegram ({cid}):", e)
 
-def scan_semua_foto_drive(page):
-    folder_id = FOLDER_UTAMA_URL.rstrip("/").split("/")[-1].split("?")[0]
-    embed_url = f"https://drive.google.com/embeddedfolderview?id={folder_id}#list"
+def ambil_8_foto_harian(page, folder_url):
+    jumlah_giat = len(DAFTAR_KEGIATAN_RESKRIM)
+    wib_sekarang = datetime.now(timezone(timedelta(hours=7))).date()
+    selisih_hari = max(0, (wib_sekarang - TANGGAL_PATOKAN).days)
+
+    kode_utama = folder_url.rstrip("/").split("/")[-1].split("?")[0]
+    embed_url = f"https://drive.google.com/embeddedfolderview?id={kode_utama}#list"
 
     file_links = []
+    seen = set()
     try:
         res = requests.get(embed_url, timeout=20)
         ids = re.findall(r"/file/d/([a-zA-Z0-9_-]{25,})/", res.text)
         if not ids:
             ids = re.findall(r'id="entry-([a-zA-Z0-9_-]{25,})"', res.text)
-        seen = set()
-        for fid in ids:
-            if fid != folder_id and fid not in seen:
-                seen.add(fid)
-                file_links.append(f"https://drive.google.com/file/d/{fid}/view?usp=drivesdk")
+
+        for item_id in ids:
+            if item_id != kode_utama and item_id not in seen:
+                seen.add(item_id)
+                file_links.append(f"https://drive.google.com/file/d/{item_id}/view?usp=drivesdk")
 
         if not file_links:
-            page.goto(FOLDER_UTAMA_URL, timeout=60000, wait_until="domcontentloaded")
+            page.goto(embed_url, timeout=60000, wait_until="domcontentloaded")
             page.wait_for_timeout(3000)
             html = page.content()
-            ids2 = re.findall(r'data-id="([a-zA-Z0-9_-]{25,})"', html)
-            for fid in ids2:
-                if fid != folder_id and fid not in seen:
-                    seen.add(fid)
-                    file_links.append(f"https://drive.google.com/file/d/{fid}/view?usp=drivesdk")
+            ids2 = re.findall(r"/file/d/([a-zA-Z0-9_-]{25,})/", html)
+            if not ids2:
+                ids2 = re.findall(r'id="entry-([a-zA-Z0-9_-]{25,})"', html)
+            for item_id in ids2:
+                if item_id != kode_utama and item_id not in seen:
+                    seen.add(item_id)
+                    file_links.append(f"https://drive.google.com/file/d/{item_id}/view?usp=drivesdk")
     except Exception as e:
-        print("Gagal scan folder utama:", e)
+        print("Gagal memindai folder Google Drive:", e)
 
-    return file_links
+    if file_links:
+        total_foto = len(file_links)
+        base_idx = selisih_hari * jumlah_giat
+        hasil_foto = []
+        for i in range(jumlah_giat):
+            idx_terpilih = (base_idx + i) % total_foto
+            hasil_foto.append((file_links[idx_terpilih], idx_terpilih + 1, total_foto))
+        return hasil_foto
 
-def pilih_foto_kegiatan(daftar_link, urutan_giat):
-    if not daftar_link:
-        return DEFAULT_LINK, 1, 1
-    wib_today = datetime.now(timezone(timedelta(hours=7))).date()
-    selisih_hari = max(0, (wib_today - TANGGAL_PATOKAN).days)
-    idx = (selisih_hari * 8 + urutan_giat) % len(daftar_link)
-    return daftar_link[idx], idx + 1, len(daftar_link)
+    return [(DEFAULT_LINK, i + 1, 1) for i in range(jumlah_giat)]
 
 def tutup_saran_jika_ada(page):
+    """Menutup kotak Saran atau keluhan 1 (tombol ×) tanpa menutup sub-kegiatan utama."""
     try:
-        tombol_x = page.locator("button:has-text('×')")
-        for i in range(tombol_x.count()):
-            if tombol_x.nth(i).is_visible():
-                tombol_x.nth(i).click()
-                page.wait_for_timeout(500)
-    except Exception:
-        pass
-
-def isi_semua_angka_nol(page):
-    inputs_num = page.locator("input[type='number']")
-    for i in range(inputs_num.count()):
-        if inputs_num.nth(i).is_visible():
-            inputs_num.nth(i).fill("0")
-    page.wait_for_timeout(500)
-
-def buka_tab_dan_kegiatan(page, teks_tab, nama_giat):
-    seksi_dua = page.get_by_text("2. PILIH QUICK WINS DAN KEGIATAN").first
-    if seksi_dua.is_visible():
-        seksi_dua.scroll_into_view_if_needed()
-
-    tab = page.locator("button, div").filter(has_text=re.compile(re.escape(teks_tab), re.I)).last
-    tab.scroll_into_view_if_needed()
-    tab.click()
-    page.wait_for_timeout(2000)
-
-    giat = page.locator("div, button").filter(has_text=re.compile(re.escape(nama_giat), re.I)).last
-    giat.scroll_into_view_if_needed()
-    giat.click()
-    page.wait_for_timeout(3000)
-
-    try:
-        btn_reskrim = page.get_by_role("button", name="Reskrim Polsek", exact=True).first
-        if btn_reskrim.is_visible():
-            btn_reskrim.click()
+        tombol_x = page.locator("xpath=//*[contains(text(), 'Saran atau keluhan')]/following::button[normalize-space()='×'][1]")
+        if tombol_x.count() > 0 and tombol_x.first.is_visible():
+            tombol_x.first.scroll_into_view_if_needed()
+            tombol_x.first.click()
             page.wait_for_timeout(500)
     except Exception:
         pass
 
-    inp_pejabat = page.get_by_label("Nama dan pangkat pejabat pelaksana")
-    inp_pejabat.scroll_into_view_if_needed()
-    inp_pejabat.fill(NAMA_KANIT_RESKRIM)
-    page.wait_for_timeout(500)
+def klik_jam_sekarang(page):
+    try:
+        btn_jam = page.get_by_role("button", name="Isi jam sekarang")
+        for i in range(btn_jam.count()):
+            if btn_jam.nth(i).is_visible():
+                btn_jam.nth(i).scroll_into_view_if_needed()
+                btn_jam.nth(i).click()
+                page.wait_for_timeout(500)
+    except Exception:
+        pass
 
-def kirim_dan_screenshot(page, kode, nama_giat, link_foto, no_foto, tot_foto, info_tambahan=""):
-    tutup_saran_jika_ada(page)
+def isi_lokasi_dan_koordinat(page, nama_lokasi, titik_koordinat):
+    try:
+        inp_tempat = page.locator("input[placeholder*='Nama tempat']")
+        for i in range(inp_tempat.count()):
+            if inp_tempat.nth(i).is_visible():
+                inp_tempat.nth(i).scroll_into_view_if_needed()
+                inp_tempat.nth(i).fill(nama_lokasi)
 
-    inputs_drive = page.locator("input[placeholder*='drive.google.com']")
-    for i in range(inputs_drive.count()):
-        if inputs_drive.nth(i).is_visible():
-            inputs_drive.nth(i).fill(link_foto)
-    page.wait_for_timeout(1000)
+        inp_koord = page.locator("input[placeholder*='Tempel koordinat']")
+        for i in range(inp_koord.count()):
+            if inp_koord.nth(i).is_visible():
+                inp_koord.nth(i).scroll_into_view_if_needed()
+                inp_koord.nth(i).fill(titik_koordinat)
+    except Exception:
+        pass
 
-    btn_kirim = page.get_by_role("button", name="Kirim laporan")
-    btn_kirim.scroll_into_view_if_needed()
-    btn_kirim.click()
-    page.wait_for_timeout(5000)
+def pilih_alasan_dropdown(page, preferensi_teks=""):
+    try:
+        selects = page.locator("select")
+        if selects.count() > 1:
+            dropdown = selects.nth(1)
+            dropdown.scroll_into_view_if_needed()
+            if preferensi_teks and dropdown.locator("option", has_text=preferensi_teks).count() > 0:
+                teks_opsi = dropdown.locator("option", has_text=preferensi_teks).first.text_content().strip()
+                dropdown.select_option(label=teks_opsi)
+            else:
+                dropdown.select_option(index=1)
+            page.wait_for_timeout(600)
+    except Exception:
+        pass
 
-    ss_path = f"bukti_{kode.replace('.', '_')}.png"
-    page.screenshot(path=ss_path)
-    teks_tambahan = f"{info_tambahan}\n" if info_tambahan else ""
-    kirim_notif_telegram(
-        f"✅ Laporan Kanit Reskrim {kode} berhasil dikirim!\n\n"
-        f"📌 Kegiatan: {nama_giat}\n"
-        f"{teks_tambahan}"
-        f"👮 Pelapor & Pelaksana: {NAMA_KANIT_RESKRIM}\n"
-        f"📸 Foto ke-{no_foto} dari {tot_foto}\n"
-        f"🔗 Link: {link_foto}",
-        ss_path
-    )
+def isi_angka_kosong_dengan_nol(page):
+    """Mengisi semua kotak input angka yang masih kosong dengan '0' tanpa mengubah angka '1' pada jenis kegiatan."""
+    try:
+        num_inputs = page.locator("input[type='number']")
+        for i in range(num_inputs.count()):
+            el = num_inputs.nth(i)
+            if el.is_visible():
+                val = (el.input_value() or "").strip()
+                if val == "":
+                    el.scroll_into_view_if_needed()
+                    el.fill("0")
+    except Exception:
+        pass
+
+def isi_link_foto_drive(page, link_foto):
+    try:
+        inputs_drive = page.locator("input[placeholder*='Google Drive'], input[placeholder*='drive.google.com']")
+        for i in range(inputs_drive.count()):
+            if inputs_drive.nth(i).is_visible():
+                inputs_drive.nth(i).scroll_into_view_if_needed()
+                inputs_drive.nth(i).fill(link_foto)
+    except Exception:
+        pass
+
+def klik_tetap_kirim_jika_ada(page):
+    try:
+        btn_tetap = page.get_by_role("button", name="Tetap kirim")
+        if btn_tetap.count() > 0 and btn_tetap.first.is_visible():
+            btn_tetap.first.scroll_into_view_if_needed()
+            btn_tetap.first.click()
+            page.wait_for_timeout(3000)
+    except Exception:
+        pass
+
+def aktifkan_sub_kegiatan_plus(page, teks_jenis, teks_header_muncul):
+    """Menekan tombol '+' pada jenis kegiatan jika sub-kotak isiannya belum muncul di layar."""
+    try:
+        if page.get_by_text(teks_header_muncul).count() == 0:
+            btn_plus = page.locator(f"xpath=//*[contains(text(), '{teks_jenis}')]/following::button[normalize-space()='+'][1]")
+            if btn_plus.count() > 0:
+                btn_plus.first.scroll_into_view_if_needed()
+                btn_plus.first.click()
+                page.wait_for_timeout(1500)
+    except Exception as e:
+        print(f"Info klik plus {teks_jenis}:", e)
 
 def jalankan_robot_reskrim():
-    wib_sekarang = datetime.now(timezone(timedelta(hours=7)))
-    nama_hari = ["Senin", "Selasa", "Rabu", "Kamis", "Jumat", "Sabtu", "Minggu"][wib_sekarang.weekday()]
-
     kirim_notif_telegram(
-        f"🤖 Robot Kanit Reskrim Jatisrono mulai berjalan...\n"
-        f"📅 Hari: {nama_hari}, {wib_sekarang.strftime('%d-%m-%Y')}\n"
-        f"👮 Pelapor: {NAMA_KANIT_RESKRIM}"
+        f"🤖 Robot Reskrim Polsek Jatisrono mulai berjalan otomatis...\n"
+        f"👮 Pelapor: {NAMA_PELAPOR}\n"
+        f"📋 Target: 8 Kegiatan Dirreskrimum / Kasat Reskrim"
     )
 
     with sync_playwright() as p:
@@ -213,92 +270,171 @@ def jalankan_robot_reskrim():
         page = context.new_page()
 
         try:
-            daftar_foto = scan_semua_foto_drive(page)
+            delapan_foto = ambil_8_foto_harian(page, FOLDER_URL_RESKRIM)
 
             page.goto("https://poskopbm.polri.go.id/input", timeout=60000, wait_until="domcontentloaded")
             page.wait_for_timeout(3000)
 
+            # 1. Login jika diminta
             if page.locator("input[type='password']").count() > 0:
                 page.locator("input[type='email'], input[type='text']").first.fill(EMAIL)
                 page.locator("input[type='password']").first.fill(PASSWORD)
                 page.get_by_role("button", name="Masuk").click()
                 page.wait_for_timeout(5000)
 
-            # IDENTITAS LAPORAN
-            page.get_by_label("Nama dan pangkat pelapor").fill(NAMA_KANIT_RESKRIM)
-            page.locator("select").first.select_option(label="Kanit Reskrim (8 kegiatan)")
-            page.wait_for_timeout(2000)
+            # 2. Isi Identitas & Pilih Jabatan Dirreskrimum / Kasat Reskrim (8 kegiatan)
+            page.get_by_label("Nama dan pangkat pelapor").fill(NAMA_PELAPOR)
+            select_jabatan = page.locator("select").first
+            opsi_reskrim = select_jabatan.locator("option", has_text="Reskrim").first
+            teks_jabatan = (opsi_reskrim.text_content() or "").strip()
+            select_jabatan.select_option(label=teks_jabatan)
+            page.wait_for_timeout(2500)
 
-            # 1. QW1.9 PATROLI SIAGA RESERSE (PAGAR)
-            rute = random.choice(DAFTAR_RUTE_RESERSE)
-            alasan_rute = random.choice(ALASAN_RUTE_RESERSE)
-            buka_tab_dan_kegiatan(page, "Ruang Publik Aman", "Patroli siaga reserse (Pagar)")
-            page.get_by_label("Rute patroli").fill(rute)
-            page.locator("textarea[placeholder*='Alasan rute dipilih']").first.fill(alasan_rute)
-            link, no, tot = pilih_foto_kegiatan(daftar_foto, 0)
-            kirim_dan_screenshot(page, "QW1.9", "Patroli siaga reserse (Pagar)", link, no, tot, f"🛣️ Rute: {rute}")
+            # 3. Loop Eksekusi 8 Kegiatan
+            for idx, item in enumerate(DAFTAR_KEGIATAN_RESKRIM):
+                kode = item["kode"]
+                nama_tab = item["tab"]
+                nama_giat = item["nama"]
+                link_foto, no_foto, tot_foto = delapan_foto[idx]
 
-            # 2. QW3.1 PENEGAKAN HUKUM JUDI DAN PENIPUAN DI RUANG DIGITAL
-            paket_judi = random.choice(PAKET_LOKASI_QW3_1)
-            buka_tab_dan_kegiatan(page, "Bersih Judi Daring dan Penipuan Digital", "Penegakan hukum judi dan penipuan di ruang digital")
-            tutup_saran_jika_ada(page)
-            page.locator("input[placeholder*='Nama tempat']").first.fill(paket_judi["lokasi"])
-            page.locator("input[placeholder*='Tempel koordinat']").first.fill(paket_judi["koordinat"])
-            page.locator("textarea[placeholder*='Alasan lokasi dipilih']").first.fill(paket_judi["pertimbangan"])
-            isi_semua_angka_nol(page)
-            link, no, tot = pilih_foto_kegiatan(daftar_foto, 1)
-            kirim_dan_screenshot(page, "QW3.1", "Penegakan hukum judi dan penipuan di ruang digital", link, no, tot, f"📍 Lokasi: {paket_judi['lokasi']}")
+                # Klik Tab Quick Wins jika sub-kegiatan belum terlihat di layar
+                if not page.get_by_text(kode).first.is_visible():
+                    tab_el = page.locator("button", has_text=nama_tab).last
+                    tab_el.scroll_into_view_if_needed()
+                    tab_el.click()
+                    page.wait_for_timeout(1500)
 
-            # 3. QW5.1 SP2HP BERKALA KEPADA PELAPOR
-            buka_tab_dan_kegiatan(page, "Perkara Terlacak, SP2HP Pasti", "SP2HP berkala kepada pelapor")
-            tutup_saran_jika_ada(page)
-            isi_semua_angka_nol(page)
-            link, no, tot = pilih_foto_kegiatan(daftar_foto, 2)
-            kirim_dan_screenshot(page, "QW5.1", "SP2HP berkala kepada pelapor", link, no, tot)
+                # Klik sub-kegiatan berdasarkan kodenya (QW1.9, QW3.1, dst.)
+                giat_el = page.get_by_text(kode).last
+                giat_el.scroll_into_view_if_needed()
+                giat_el.click()
+                page.wait_for_timeout(2500)
 
-            # 4. QW5.2 LAYANAN INFORMASI PERKARA
-            buka_tab_dan_kegiatan(page, "Perkara Terlacak, SP2HP Pasti", "Layanan informasi perkara")
-            tutup_saran_jika_ada(page)
-            isi_semua_angka_nol(page)
-            link, no, tot = pilih_foto_kegiatan(daftar_foto, 3)
-            kirim_dan_screenshot(page, "QW5.2", "Layanan informasi perkara", link, no, tot)
+                # ======================================================
+                # A. LOGIKA KHUSUS QW1.9 (PATROLI SIAGA RESERSE)
+                # ======================================================
+                if kode == "QW1.9":
+                    rute_pilihan = random.choice(DAFTAR_RUTE_RESKRIM)
+                    inp_rute = page.locator("input[placeholder*='Jalan, kecamatan']")
+                    if inp_rute.count() > 0:
+                        inp_rute.first.scroll_into_view_if_needed()
+                        inp_rute.first.fill(rute_pilihan)
 
-            # 5. QW5.3 GELAR PERKARA ATAS PENGADUAN WARGA
-            buka_tab_dan_kegiatan(page, "Perkara Terlacak, SP2HP Pasti", "Gelar perkara atas pengaduan warga")
-            tutup_saran_jika_ada(page)
-            isi_semua_angka_nol(page)
-            link, no, tot = pilih_foto_kegiatan(daftar_foto, 4)
-            kirim_dan_screenshot(page, "QW5.3", "Gelar perkara atas pengaduan warga", link, no, tot)
+                    pilih_alasan_dropdown(page, "Rawan kejahatan")
+                    klik_jam_sekarang(page)
 
-            # 6. QW5.4 KEADILAN RESTORATIF UNTUK PERKARA RINGAN
-            buka_tab_dan_kegiatan(page, "Perkara Terlacak, SP2HP Pasti", "Keadilan restoratif untuk perkara ringan")
-            tutup_saran_jika_ada(page)
-            isi_semua_angka_nol(page)
-            link, no, tot = pilih_foto_kegiatan(daftar_foto, 5)
-            kirim_dan_screenshot(page, "QW5.4", "Keadilan restoratif untuk perkara ringan", link, no, tot)
+                    btn_tidak_ada = page.get_by_role("button", name="Tidak ada", exact=True)
+                    if btn_tidak_ada.count() > 0:
+                        btn_tidak_ada.first.scroll_into_view_if_needed()
+                        btn_tidak_ada.first.click()
+                        page.wait_for_timeout(500)
 
-            # 7. QW8.1 PENANGANAN BBM ILEGAL DAN KEJAHATAN EKONOMI
-            buka_tab_dan_kegiatan(page, "KUHP/KUHAP Siap, Penyidikan Berbasis Ilmiah", "Penanganan BBM ilegal dan kejahatan ekonomi")
-            tutup_saran_jika_ada(page)
-            page.get_by_role("button", name="Normal", exact=True).click()
-            isi_semua_angka_nol(page)
-            link, no, tot = pilih_foto_kegiatan(daftar_foto, 6)
-            kirim_dan_screenshot(page, "QW8.1", "Penanganan BBM ilegal dan kejahatan ekonomi", link, no, tot)
+                    tutup_saran_jika_ada(page)
+                    isi_link_foto_drive(page, link_foto)
 
-            # 8. QW8.2 PENANGANAN TPPO, KORUPSI, PENYELUNDUPAN, DAN TPPU
-            buka_tab_dan_kegiatan(page, "KUHP/KUHAP Siap, Penyidikan Berbasis Ilmiah", "Penanganan TPPO, korupsi, penyelundupan, dan pencucian uang")
-            tutup_saran_jika_ada(page)
-            isi_semua_angka_nol(page)
-            link, no, tot = pilih_foto_kegiatan(daftar_foto, 7)
-            kirim_dan_screenshot(page, "QW8.2", "Penanganan TPPO, korupsi, penyelundupan, dan pencucian uang", link, no, tot)
+                # ======================================================
+                # B. LOGIKA KHUSUS QW3.1 (JUDI DARING & PENIPUAN DIGITAL)
+                # ======================================================
+                elif kode == "QW3.1":
+                    paket_lok = random.choice(DAFTAR_LOKASI_UMUM)
+                    tutup_saran_jika_ada(page)
+                    aktifkan_sub_kegiatan_plus(page, "Kegiatan penipuan digital", "KEGIATAN PENIPUAN DIGITAL 1")
+
+                    isi_lokasi_dan_koordinat(page, paket_lok["lokasi"], paket_lok["koordinat"])
+                    klik_jam_sekarang(page)
+                    pilih_alasan_dropdown(page, "Jadwal rutin satuan")
+                    isi_angka_kosong_dengan_nol(page)
+                    isi_link_foto_drive(page, link_foto)
+
+                # ======================================================
+                # C. LOGIKA KHUSUS QW5.1, QW5.2, QW5.3, QW5.4
+                # ======================================================
+                elif kode in ["QW5.1", "QW5.2", "QW5.3", "QW5.4"]:
+                    tutup_saran_jika_ada(page)
+                    isi_lokasi_dan_koordinat(page, LOKASI_MAKO["lokasi"], LOKASI_MAKO["koordinat"])
+                    klik_jam_sekarang(page)
+                    isi_angka_kosong_dengan_nol(page)
+                    isi_link_foto_drive(page, link_foto)
+
+                    # Tutup entri Perkara 1 / Layanan 1 / Pengaduan 1 jika ada tombol Tutup
+                    try:
+                        btn_tutup_entri = page.locator("xpath=//*[contains(text(), 'Perkara 1') or contains(text(), 'Layanan 1') or contains(text(), 'Pengaduan 1')]/following::button[normalize-space()='×'][1]")
+                        if btn_tutup_entri.count() > 0 and btn_tutup_entri.first.is_visible():
+                            btn_tutup_entri.first.scroll_into_view_if_needed()
+                            btn_tutup_entri.first.click()
+                            page.wait_for_timeout(500)
+                    except Exception:
+                        pass
+
+                    # Klik tombol "Tidak" pada "Apakah satuan Anda menangani penyidikan perkara?"
+                    btn_tidak = page.get_by_role("button", name="Tidak", exact=True)
+                    if btn_tidak.count() > 0:
+                        btn_tidak.first.scroll_into_view_if_needed()
+                        btn_tidak.first.click()
+                        page.wait_for_timeout(500)
+
+                # ======================================================
+                # D. LOGIKA KHUSUS QW8.1 (BBM/LPG ILEGAL & EKONOMI)
+                # ======================================================
+                elif kode == "QW8.1":
+                    tutup_saran_jika_ada(page)
+                    aktifkan_sub_kegiatan_plus(page, "Kegiatan BBM/LPG ilegal", "KEGIATAN BBM/LPG ILEGAL 1")
+
+                    isi_lokasi_dan_koordinat(page, LOKASI_SPBU["lokasi"], LOKASI_SPBU["koordinat"])
+                    klik_jam_sekarang(page)
+
+                    # Pilih kondisi pasokan "Normal"
+                    btn_normal = page.get_by_role("button", name="Normal", exact=True)
+                    if btn_normal.count() > 0:
+                        btn_normal.first.scroll_into_view_if_needed()
+                        btn_normal.first.click()
+                        page.wait_for_timeout(400)
+
+                    isi_angka_kosong_dengan_nol(page)
+                    isi_link_foto_drive(page, link_foto)
+
+                # ======================================================
+                # E. LOGIKA KHUSUS QW8.2 (TPPO, KORUPSI, PREMANISME)
+                # ======================================================
+                elif kode == "QW8.2":
+                    paket_lok = random.choice(DAFTAR_LOKASI_UMUM)
+                    tutup_saran_jika_ada(page)
+                    aktifkan_sub_kegiatan_plus(page, "Kegiatan kejahatan terkait premanisme", "KEGIATAN KEJAHATAN TERKAIT PREMANISME 1")
+
+                    isi_lokasi_dan_koordinat(page, paket_lok["lokasi"], paket_lok["koordinat"])
+                    klik_jam_sekarang(page)
+                    isi_angka_kosong_dengan_nol(page)
+                    isi_link_foto_drive(page, link_foto)
+
+                # Klik Kirim laporan
+                page.wait_for_timeout(1000)
+                btn_kirim = page.get_by_role("button", name="Kirim laporan")
+                btn_kirim.scroll_into_view_if_needed()
+                btn_kirim.click()
+                page.wait_for_timeout(2000)
+
+                klik_tetap_kirim_jika_ada(page)
+                page.wait_for_timeout(4000)
+
+                btn_kirim.scroll_into_view_if_needed()
+                ss_path = f"bukti_{kode.replace('.', '_')}.png"
+                page.screenshot(path=ss_path)
+                kirim_notif_telegram(
+                    f"✅ Laporan Reskrim {kode} berhasil dikirim!\n\n"
+                    f"📌 Kegiatan: {nama_giat}\n"
+                    f"👮 Pelapor: {NAMA_PELAPOR}\n"
+                    f"📸 Foto ke-{no_foto} dari {tot_foto}\n"
+                    f"🔗 Link: {link_foto}",
+                    ss_path
+                )
 
         except Exception as e:
             err_ss = "error_reskrim.png"
             try:
                 page.screenshot(path=err_ss)
-                kirim_notif_telegram(f"⚠️ Gagal mengirim laporan Kanit Reskrim:\n{str(e)}", err_ss)
+                kirim_notif_telegram(f"⚠️ Gagal mengirim laporan Reskrim:\n{str(e)}", err_ss)
             except Exception:
-                kirim_notif_telegram(f"⚠️ Gagal mengirim laporan Kanit Reskrim:\n{str(e)}")
+                kirim_notif_telegram(f"⚠️ Gagal membuka web Reskrim:\n{str(e)}")
         finally:
             browser.close()
 
